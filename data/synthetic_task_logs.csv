@@ -1,0 +1,9 @@
+log_id,user_id,task_id,source,event_type,event_timestamp_utc,metadata
+log_001,user_123,td_001,todoist,created,2024-09-01T09:00:00Z,"{}"
+log_002,user_123,td_001,todoist,viewed,2024-09-01T13:00:00Z,"{}"
+log_003,user_123,td_001,todoist,completed,2024-09-02T14:45:00Z,"{}"
+log_004,user_123,td_002,todoist,created,2024-09-01T10:00:00Z,"{}"
+log_005,user_123,td_002,todoist,postponed,2024-09-03T16:30:00Z,"{""reason"": ""meeting overran""}"
+log_006,user_123,td_002,todoist,missed,2024-09-03T17:30:00Z,"{}"
+
+

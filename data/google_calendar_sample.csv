@@ -1,0 +1,16 @@
+event_id,user_id,summary,description,start_datetime_utc,end_datetime_utc,created_at_utc,updated_at_utc,status,attendees_count,is_all_day,location,source
+evt_001,user_123,Sprint Planning,Plan sprint backlog,2025-12-19T09:00:00Z,2025-12-19T10:00:00Z,2025-12-19T06:00:00Z,2025-12-19T06:05:00Z,confirmed,6,false,Zoom,sample_google_calendar
+evt_002,user_123,Deep Work,Focus time,2025-12-19T10:30:00Z,2025-12-19T12:30:00Z,2025-12-19T06:10:00Z,2025-12-19T06:10:00Z,confirmed,1,false,,sample_google_calendar
+evt_003,user_123,1:1 with Manager,Weekly sync,2025-12-20T09:30:00Z,2025-12-20T10:00:00Z,2025-12-19T06:20:00Z,2025-12-19T06:25:00Z,confirmed,2,false,Office,sample_google_calendar
+evt_004,user_123,Code Review,Review pull requests,2025-12-20T11:00:00Z,2025-12-20T12:00:00Z,2025-12-19T06:30:00Z,2025-12-19T06:35:00Z,confirmed,4,false,GitHub,sample_google_calendar
+evt_005,user_123,Product Sync,Discuss roadmap,2025-12-21T09:00:00Z,2025-12-21T10:00:00Z,2025-12-19T06:40:00Z,2025-12-19T06:45:00Z,confirmed,5,false,Zoom,sample_google_calendar
+evt_006,user_123,Design Review,UI feedback session,2025-12-21T11:00:00Z,2025-12-21T12:00:00Z,2025-12-19T06:50:00Z,2025-12-19T06:55:00Z,confirmed,3,false,Figma,sample_google_calendar
+evt_007,user_123,Client Call,Status update,2025-12-22T09:30:00Z,2025-12-22T10:30:00Z,2025-12-19T07:00:00Z,2025-12-19T07:05:00Z,confirmed,3,false,Google Meet,sample_google_calendar
+evt_008,user_123,Backend Refactor,Architecture improvements,2025-12-22T11:00:00Z,2025-12-22T13:00:00Z,2025-12-19T07:10:00Z,2025-12-19T07:10:00Z,confirmed,1,false,,sample_google_calendar
+evt_009,user_123,Team Standup,Daily sync,2025-12-23T09:00:00Z,2025-12-23T09:15:00Z,2025-12-19T07:20:00Z,2025-12-19T07:20:00Z,confirmed,8,false,Office,sample_google_calendar
+evt_010,user_123,AI Model Review,Performance evaluation,2025-12-24T10:00:00Z,2025-12-24T11:00:00Z,2025-12-19T07:30:00Z,2025-12-19T07:35:00Z,confirmed,4,false,Zoom,sample_google_calendar
+evt_011,user_123,Deployment Window,Production release,2025-12-26T08:00:00Z,2025-12-26T09:00:00Z,2025-12-19T07:40:00Z,2025-12-19T07:45:00Z,confirmed,2,false,AWS Console,sample_google_calendar
+evt_012,user_123,Postmortem,Incident analysis,2025-12-27T10:00:00Z,2025-12-27T11:00:00Z,2025-12-19T07:50:00Z,2025-12-19T07:55:00Z,confirmed,6,false,Zoom,sample_google_calendar
+evt_013,user_123,Strategy Review,Year-end planning,2025-12-29T09:00:00Z,2025-12-29T10:30:00Z,2025-12-19T08:00:00Z,2025-12-19T08:05:00Z,confirmed,5,false,Board Room,sample_google_calendar
+evt_014,user_123,Learning Block,Upskilling time,2025-12-30T11:00:00Z,2025-12-30T13:00:00Z,2025-12-19T08:10:00Z,2025-12-19T08:10:00Z,confirmed,1,false,,sample_google_calendar
+evt_015,user_123,Year-End Wrap-up,Close open tasks,2026-01-01T09:00:00Z,2026-01-01T10:00:00Z,2025-12-19T08:20:00Z,2025-12-19T08:25:00Z,confirmed,3,false,Office,sample_google_calendar

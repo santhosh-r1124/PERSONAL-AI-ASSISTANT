@@ -1,0 +1,6 @@
+task_id,user_id,content,project,section,priority,due_datetime_utc,created_at_utc,completed_at_utc,labels,estimated_duration_minutes,status,source
+td_001,user_123,Reply to Alice's budget email,Work,Inbox,3,2024-09-02T15:00:00Z,2024-09-01T09:00:00Z,,email,15,open,todoist_export
+td_002,user_123,Prepare Q3 OKR draft,Work,Planning,4,2024-09-03T17:00:00Z,2024-09-01T10:00:00Z,,okr;deep-work,90,open,todoist_export
+td_003,user_123,Book dentist appointment,Personal,Errands,2,2024-09-05T12:00:00Z,2024-08-29T18:00:00Z,2024-08-30T10:00:00Z,call,10,completed,todoist_export
+
+

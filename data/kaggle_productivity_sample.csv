@@ -1,0 +1,6 @@
+user_id,date,total_tasks_completed,total_minutes_focused,context_switches,emails_sent,meetings_count,late_tasks_count
+user_123,2024-08-26,12,320,18,34,5,1
+user_123,2024-08-27,9,260,25,41,7,3
+user_123,2024-08-28,15,410,14,28,3,0
+
+
