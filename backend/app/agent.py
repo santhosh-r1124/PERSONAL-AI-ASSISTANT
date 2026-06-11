@@ -5,7 +5,8 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from .intent import ParsedIntent, intent_service
-from .models import Task, AuditLog
+from .models import Task, AuditLog, User
+from .services import google_service
 
 
 class ToolCall(BaseModel):
@@ -59,11 +60,15 @@ class ToolRouter:
     # --- External tools (stubs) ---
 
     def google_calendar_create_event(self, payload: dict[str, Any]) -> dict[str, Any]:
-        # Here you would call Google Calendar API with proper OAuth token.
-        # For this working model, we just echo the payload.
+        user = self.db.query(User).filter(User.id == self.user_id).first()
+        if user and user.google_access_token:
+            return google_service.create_calendar_event(user, self.db, payload)
         return {"status": "simulated", "service": "google_calendar", "payload": payload}
 
     def gmail_send_email(self, payload: dict[str, Any]) -> dict[str, Any]:
+        user = self.db.query(User).filter(User.id == self.user_id).first()
+        if user and user.google_access_token:
+            return google_service.send_gmail(user, self.db, payload)
         return {"status": "simulated", "service": "gmail", "payload": payload}
 
     def notion_create_page(self, payload: dict[str, Any]) -> dict[str, Any]:
@@ -162,16 +167,39 @@ class AgentOrchestrator:
                         }
                     )
                 elif call.name == "gmail_fetch_and_extract_tasks":
-                    # Stub: in production, fetch Gmail messages and parse tasks with LLM.
+                    from .integrations_data import email_tasks_for_user
+                    from .models import User as UserModel
+
+                    user = db.query(UserModel).filter(UserModel.id == user_id).first()
+                    email = user.email if user else ""
+                    emails = email_tasks_for_user(email, db)
+                    created = []
+                    for et in emails[:5]:
+                        task = router.create_task(
+                            title=et.content,
+                            description=f"From email ({et.section})",
+                            priority=et.priority,
+                        )
+                        task.source = "gmail"
+                        task.source_ref = et.task_id
+                        db.commit()
+                        created.append({"task_id": task.id, "title": task.title})
                     results.append(
                         {
                             "tool": call.name,
                             "result": {
-                                "status": "simulated",
-                                "message": "Would fetch recent emails and extract tasks.",
+                                "status": "ok",
+                                "emails_found": len(emails),
+                                "tasks_created": created,
                             },
                         }
                     )
+                elif call.name == "google_calendar_create_event":
+                    result = router.google_calendar_create_event(call.args)
+                    results.append({"tool": call.name, "result": result})
+                elif call.name == "gmail_send_email":
+                    result = router.gmail_send_email(call.args)
+                    results.append({"tool": call.name, "result": result})
                 else:
                     results.append(
                         {

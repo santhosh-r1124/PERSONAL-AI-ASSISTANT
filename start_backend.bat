@@ -19,7 +19,7 @@ echo Checking dependencies...
 pip show fastapi >nul 2>&1
 if errorlevel 1 (
     echo Installing dependencies...
-    pip install --upgrade pip
+    python -m pip install --upgrade pip
     pip install -r requirements.txt
 )
 

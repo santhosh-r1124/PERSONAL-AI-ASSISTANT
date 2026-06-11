@@ -28,6 +28,31 @@ class IntentService:
     """
 
     def parse(self, text: str) -> ParsedIntent:
+        from .services import gemini_service
+
+        if gemini_service.is_available():
+            llm_result = gemini_service.parse_intent(text)
+            if llm_result:
+                intent = llm_result.get("intent", "general_query")
+                valid_intents = {
+                    "create_task", "schedule_task", "reschedule_tasks",
+                    "email_to_task", "missed_task_followup", "general_query",
+                    "check_calendar", "check_email",
+                }
+                if intent not in valid_intents:
+                    intent = "general_query"
+                title = llm_result.get("title") or text
+                priority = llm_result.get("priority")
+                if intent == "check_calendar":
+                    intent = "general_query"
+                if intent == "check_email":
+                    intent = "email_to_task"
+                return ParsedIntent(
+                    intent=intent,  # type: ignore[arg-type]
+                    text=title if intent == "create_task" else text,
+                    priority=int(priority) if priority else None,
+                )
+
         lowered = text.lower()
 
         if "reschedule" in lowered or "move" in lowered or "shift" in lowered:

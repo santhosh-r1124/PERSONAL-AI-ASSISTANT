@@ -18,7 +18,7 @@ Write-Host "Checking dependencies..." -ForegroundColor Yellow
 pip show fastapi > $null 2>&1
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Installing dependencies..." -ForegroundColor Yellow
-    pip install --upgrade pip
+    python -m pip install --upgrade pip
     pip install -r requirements.txt
 }
 
